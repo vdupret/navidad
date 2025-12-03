@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Viejito Pascuero Familia</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Quicksand:wght@500;700&display=swap');
+
         :root {
             --red: #D42426;
             --green: #2F5233;
@@ -15,12 +17,14 @@
             --dark: #1a1a1a;
             --error: #ff4444;
         }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             -webkit-tap-highlight-color: transparent;
         }
+
         body {
             font-family: 'Quicksand', sans-serif;
             background-color: var(--green);
@@ -34,6 +38,7 @@
             overflow-x: hidden;
             position: relative;
         }
+
         /* Efecto de Nieve (CSS Puro) */
         .snowflake {
             position: absolute;
@@ -50,63 +55,79 @@
             animation-iteration-count: infinite, infinite;
             pointer-events: none;
         }
+
         @keyframes snowflakes-fall {
             0% {
                 top: -10%;
             }
+
             100% {
                 top: 100%;
             }
         }
+
         @keyframes snowflakes-shake {
+
             0%,
             100% {
                 transform: translateX(0);
             }
+
             50% {
                 transform: translateX(80px);
             }
         }
+
         .snowflake:nth-of-type(1) {
             left: 1%;
             animation-delay: 0s, 0s;
         }
+
         .snowflake:nth-of-type(2) {
             left: 10%;
             animation-delay: 1s, 1s;
         }
+
         .snowflake:nth-of-type(3) {
             left: 20%;
             animation-delay: 6s, .5s;
         }
+
         .snowflake:nth-of-type(4) {
             left: 30%;
             animation-delay: 4s, 2s;
         }
+
         .snowflake:nth-of-type(5) {
             left: 40%;
             animation-delay: 2s, 2s;
         }
+
         .snowflake:nth-of-type(6) {
             left: 50%;
             animation-delay: 8s, 3s;
         }
+
         .snowflake:nth-of-type(7) {
             left: 60%;
             animation-delay: 6s, 2s;
         }
+
         .snowflake:nth-of-type(8) {
             left: 70%;
             animation-delay: 2.5s, 1s;
         }
+
         .snowflake:nth-of-type(9) {
             left: 80%;
             animation-delay: 1s, 0s;
         }
+
         .snowflake:nth-of-type(10) {
             left: 90%;
             animation-delay: 3s, 1.5s;
         }
+
         /* Contenedor Principal */
         .container {
             background: var(--cream);
@@ -120,6 +141,7 @@
             border: 4px solid var(--gold);
             position: relative;
         }
+
         .holly-decoration {
             position: absolute;
             top: -25px;
@@ -130,6 +152,7 @@
             padding: 0 10px;
             border-radius: 50%;
         }
+
         h1 {
             font-family: 'Mountains of Christmas', cursive;
             font-size: 2.5rem;
@@ -138,17 +161,20 @@
             margin-top: 1rem;
             line-height: 1.1;
         }
+
         p.subtitle {
             color: #666;
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
+
         /* Grid de Botones */
         .names-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
+
         .name-btn {
             background: white;
             border: 2px solid var(--green);
@@ -162,6 +188,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             font-family: 'Quicksand', sans-serif;
         }
+
         .name-btn:hover,
         .name-btn:active {
             background: var(--green);
@@ -169,6 +196,7 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(47, 82, 51, 0.3);
         }
+
         /* Modal General */
         .modal-overlay {
             position: fixed;
@@ -186,10 +214,12 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
         }
+
         .modal-overlay.active {
             opacity: 1;
             visibility: visible;
         }
+
         .modal-card {
             background: white;
             width: 85%;
@@ -203,24 +233,29 @@
             position: relative;
             overflow: hidden;
         }
+
         .modal-overlay.active .modal-card {
             transform: scale(1);
         }
+
         .modal-title {
             font-family: 'Mountains of Christmas', cursive;
             font-size: 2rem;
             color: var(--red);
             margin-bottom: 1rem;
         }
+
         .modal-text {
             font-size: 1.2rem;
             color: #555;
             margin-bottom: 1.5rem;
         }
+
         /* Estilos específicos del PIN */
         .pin-input-container {
             margin-bottom: 1.5rem;
         }
+
         .pin-input {
             font-size: 2rem;
             width: 120px;
@@ -233,25 +268,32 @@
             outline: none;
             transition: border-color 0.3s;
         }
+
         .pin-input:focus {
             border-color: var(--green);
         }
+
         .pin-input.error {
             border-color: var(--error);
             animation: shake 0.4s ease-in-out;
         }
+
         @keyframes shake {
+
             0%,
             100% {
                 transform: translateX(0);
             }
+
             25% {
                 transform: translateX(-10px);
             }
+
             75% {
                 transform: translateX(10px);
             }
         }
+
         .action-btn {
             background: var(--green);
             color: white;
@@ -264,9 +306,11 @@
             box-shadow: 0 4px 10px rgba(47, 82, 51, 0.3);
             transition: transform 0.2s;
         }
+
         .action-btn:active {
             transform: scale(0.95);
         }
+
         /* Estilos del Resultado */
         .reveal-box {
             background: var(--green);
@@ -280,6 +324,7 @@
             text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
             position: relative;
         }
+
         .close-btn {
             background: transparent;
             border: 2px solid #ddd;
@@ -290,10 +335,12 @@
             cursor: pointer;
             transition: all 0.2s;
         }
+
         .close-btn:hover {
             border-color: var(--red);
             color: var(--red);
         }
+
         /* Canvas para Confeti */
         #confetti-canvas {
             position: fixed;
@@ -304,6 +351,7 @@
             pointer-events: none;
             z-index: 200;
         }
+
         footer {
             margin-top: 2rem;
             color: rgba(255, 255, 255, 0.7);
@@ -312,7 +360,9 @@
         }
     </style>
 </head>
+
 <body>
+
     <!-- Nieve de fondo -->
     <div class="snowflake">❅</div>
     <div class="snowflake">❆</div>
@@ -324,41 +374,52 @@
     <div class="snowflake">❆</div>
     <div class="snowflake">❅</div>
     <div class="snowflake">❆</div>
+
     <div class="container">
         <div class="holly-decoration">🎄</div>
         <h1>Viejito Pascuero</h1>
         <p class="subtitle">¿Quién eres?</p>
+
         <div class="names-grid" id="buttons-container">
             <!-- Los botones se generan con JS -->
         </div>
     </div>
+
     <footer>Hecho con ❤️ para la Familia</footer>
+
     <!-- Modal de PIN -->
     <div class="modal-overlay" id="pin-modal">
         <div class="modal-card">
             <h2 class="modal-title">Seguridad</h2>
             <p class="modal-text" id="pin-instruction">Ingresa tu código secreto:</p>
+
             <div class="pin-input-container">
                 <input type="tel" id="pin-input" class="pin-input" maxlength="3" placeholder="***" autocomplete="off">
             </div>
+
             <button class="action-btn" onclick="verifyPin()">Verificar</button>
             <br><br>
             <button class="close-btn" onclick="closePinModal()"
                 style="font-size: 0.8rem; padding: 5px 15px;">Cancelar</button>
         </div>
     </div>
+
     <!-- Modal de Resultado -->
     <div class="modal-overlay" id="result-modal">
         <div class="modal-card">
             <h2 class="modal-title" id="result-greeting">¡Hola!</h2>
             <p class="modal-text">Tu amigo secreto es:</p>
+
             <div class="reveal-box">
                 <span id="secret-friend-name">...</span>
             </div>
+
             <button class="close-btn" onclick="closeResultModal()">Cerrar</button>
         </div>
     </div>
+
     <canvas id="confetti-canvas"></canvas>
+
     <script>
         // --- CONFIGURACIÓN DE PAREJAS Y PINS ---
         // Asignación Circular:
@@ -368,21 +429,26 @@
         // Cristian -> Rafa
         // Gigi -> Dani
         // Victor -> Cristian
+
         const participants = {
-            "Mama": { target: "R2lnaQ==", pin: "123" }, // Gigi
+            "Mami": { target: "R2lnaQ==", pin: "123" }, // Gigi
             "Rafa": { target: "VmljdG9y", pin: "456" }, // Victor
-            "Dani": { target: "TWFtYQ==", pin: "789" }, // Mama
+            "Dani": { target: "TWFtaQ==", pin: "789" }, // Mami
             "Cristian": { target: "UmFmYQ==", pin: "321" }, // Rafa
             "Gigi": { target: "RGFuaQ==", pin: "654" }, // Dani
             "Victor": { target: "Q3Jpc3RpYW4=", pin: "987" }  // Cristian
         };
+
         let selectedUser = null;
+
         const container = document.getElementById('buttons-container');
         const pinModal = document.getElementById('pin-modal');
         const resultModal = document.getElementById('result-modal');
         const pinInput = document.getElementById('pin-input');
+
         const resultGreeting = document.getElementById('result-greeting');
         const secretNameSpan = document.getElementById('secret-friend-name');
+
         // Generar botones
         Object.keys(participants).forEach(name => {
             const btn = document.createElement('button');
@@ -391,7 +457,9 @@
             btn.onclick = () => openPinModal(name);
             container.appendChild(btn);
         });
+
         // --- LÓGICA DEL PIN ---
+
         function openPinModal(name) {
             selectedUser = name;
             document.getElementById('pin-instruction').innerText = `Hola ${name}, ingresa tu código:`;
@@ -400,24 +468,31 @@
             pinModal.classList.add('active');
             setTimeout(() => pinInput.focus(), 300); // Auto-focus
         }
+
         function closePinModal() {
             pinModal.classList.remove('active');
             selectedUser = null;
         }
+
         function verifyPin() {
             if (!selectedUser) return;
+
             const enteredPin = pinInput.value.trim();
             const correctPin = participants[selectedUser].pin;
+
             if (enteredPin === correctPin) {
                 // PIN Correcto
                 const currentUser = selectedUser;
+
                 // Ocultar modal de PIN
                 pinModal.classList.remove('active');
                 pinInput.value = '';
+
                 // Mostrar resultado con un pequeño retraso para asegurar transición suave
                 setTimeout(() => {
                     showResult(currentUser);
                 }, 300);
+
                 selectedUser = null;
             } else {
                 // PIN Incorrecto
@@ -426,23 +501,29 @@
                 setTimeout(() => pinInput.classList.remove('error'), 500);
             }
         }
+
         // Permitir Enter en el input
         pinInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 verifyPin();
             }
         });
+
         // --- LÓGICA DE RESULTADO ---
+
         function showResult(name) {
             try {
                 if (!participants[name]) {
                     console.error("Usuario no encontrado:", name);
                     return;
                 }
+
                 const userData = participants[name];
                 const targetName = atob(userData.target);
+
                 resultGreeting.innerText = `¡Hola ${name}!`;
                 secretNameSpan.innerText = targetName;
+
                 resultModal.classList.add('active');
                 fireConfetti();
             } catch (e) {
@@ -450,22 +531,27 @@
                 alert("Hubo un error al mostrar el resultado. Por favor intenta de nuevo.");
             }
         }
+
         function closeResultModal() {
             resultModal.classList.remove('active');
         }
+
         // --- LÓGICA DE CONFETI ---
         const canvas = document.getElementById('confetti-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
+
         function fireConfetti() {
             particles = [];
             const colors = ['#D42426', '#2F5233', '#F1D570', '#FFFFFF'];
+
             for (let i = 0; i < 150; i++) {
                 particles.push({
                     x: window.innerWidth / 2,
@@ -483,29 +569,36 @@
             }
             animateConfetti();
         }
+
         function animateConfetti() {
             if (particles.length === 0) return;
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+
             particles.forEach((p, index) => {
                 p.x += p.vx;
                 p.y += p.vy;
                 p.vy += p.gravity;
                 p.vx *= p.drag;
                 p.rotation += p.rotationSpeed;
+
                 ctx.save();
                 ctx.translate(p.x, p.y);
                 ctx.rotate(p.rotation * Math.PI / 180);
                 ctx.fillStyle = p.color;
                 ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
                 ctx.restore();
+
                 if (p.y > canvas.height) {
                     particles.splice(index, 1);
                 }
             });
+
             if (particles.length > 0) {
                 requestAnimationFrame(animateConfetti);
             }
         }
     </script>
 </body>
+
 </html>
