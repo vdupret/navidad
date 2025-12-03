@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Viejito Pascuero Familia</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Quicksand:wght@500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Outfit:wght@300;500;700&display=swap');
 
         :root {
-            --red: #D42426;
-            --green: #2F5233;
-            --gold: #F1D570;
-            --white: #ffffff;
-            --cream: #FDFBF7;
-            --dark: #1a1a1a;
-            --error: #ff4444;
+            --bg-dark: #051F20;
+            --bg-light: #0B2B26;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-main: #F2F2F2;
+            --text-muted: #B0B0B0;
+            --gold: #D4AF37;
+            --gold-glow: #F9E59E;
+            --red: #C92C34;
+            --green-accent: #235D3A;
+            --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         * {
@@ -26,10 +30,10 @@
         }
 
         body {
-            font-family: 'Quicksand', sans-serif;
-            background-color: var(--green);
-            background-image: radial-gradient(circle at 50% 50%, #4a8550 0%, #2F5233 100%);
-            color: var(--dark);
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 50% 0%, var(--bg-light) 0%, var(--bg-dark) 100%);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -39,18 +43,18 @@
             position: relative;
         }
 
-        /* Efecto de Nieve (CSS Puro) */
+        /* Efecto de Nieve (CSS Puro) - Refinado */
         .snowflake {
             position: absolute;
             top: -10px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 1em;
             font-family: Arial, sans-serif;
-            text-shadow: 0 0 5px #000;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
             user-select: none;
             z-index: 1;
             animation-name: snowflakes-fall, snowflakes-shake;
-            animation-duration: 10s, 3s;
+            animation-duration: 12s, 4s;
             animation-timing-function: linear, ease-in-out;
             animation-iteration-count: infinite, infinite;
             pointer-events: none;
@@ -74,10 +78,11 @@
             }
 
             50% {
-                transform: translateX(80px);
+                transform: translateX(60px);
             }
         }
 
+        /* Posicionamiento de nieve */
         .snowflake:nth-of-type(1) {
             left: 1%;
             animation-delay: 0s, 0s;
@@ -128,73 +133,109 @@
             animation-delay: 3s, 1.5s;
         }
 
-        /* Contenedor Principal */
+        /* Contenedor Principal Glassmorphism */
         .container {
-            background: var(--cream);
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
             width: 90%;
-            max-width: 400px;
-            border-radius: 24px;
-            padding: 2rem;
+            max-width: 420px;
+            border-radius: 30px;
+            padding: 3rem 2rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-soft);
             z-index: 10;
-            border: 4px solid var(--gold);
             position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .holly-decoration {
             position: absolute;
-            top: -25px;
+            top: -30px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 3rem;
-            background: var(--cream);
-            padding: 0 10px;
-            border-radius: 50%;
+            font-size: 3.5rem;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
         }
 
         h1 {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.5rem;
-            color: var(--green);
+            font-size: 3rem;
+            background: linear-gradient(to bottom, var(--gold-glow), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 0.5rem;
             margin-top: 1rem;
             line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
 
         p.subtitle {
-            color: #666;
-            margin-bottom: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
             font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         /* Grid de Botones */
         .names-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 16px;
         }
 
         .name-btn {
-            background: white;
-            border: 2px solid var(--green);
-            color: var(--green);
-            padding: 15px;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 18px;
+            border-radius: 20px;
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            font-family: 'Quicksand', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Outfit', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
 
-        .name-btn:hover,
+        .name-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .name-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+            color: var(--gold-glow);
+        }
+
         .name-btn:active {
-            background: var(--green);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(47, 82, 51, 0.3);
+            transform: scale(0.98);
         }
 
         /* Modal General */
@@ -204,15 +245,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 100;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
         }
 
         .modal-overlay.active {
@@ -221,60 +262,65 @@
         }
 
         .modal-card {
-            background: white;
+            background: rgba(20, 20, 20, 0.95);
             width: 85%;
-            max-width: 350px;
-            padding: 2.5rem 2rem;
-            border-radius: 24px;
+            max-width: 360px;
+            padding: 3rem 2rem;
+            border-radius: 30px;
             text-align: center;
-            transform: scale(0.8);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 4px solid var(--gold);
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--gold);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             position: relative;
-            overflow: hidden;
         }
 
         .modal-overlay.active .modal-card {
-            transform: scale(1);
+            transform: scale(1) translateY(0);
         }
 
         .modal-title {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--red);
             margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .modal-text {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
         }
 
         /* Estilos específicos del PIN */
         .pin-input-container {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .pin-input {
-            font-size: 2rem;
-            width: 120px;
+            font-size: 2.5rem;
+            width: 140px;
             padding: 10px;
             text-align: center;
-            border: 2px solid #ddd;
-            border-radius: 12px;
-            letter-spacing: 5px;
-            font-family: 'Quicksand', sans-serif;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--text-muted);
+            color: var(--gold);
+            letter-spacing: 8px;
+            font-family: 'Outfit', sans-serif;
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
         }
 
         .pin-input:focus {
-            border-color: var(--green);
+            border-bottom-color: var(--gold);
+            box-shadow: 0 4px 0 -2px rgba(212, 175, 55, 0.3);
         }
 
         .pin-input.error {
-            border-color: var(--error);
+            border-bottom-color: var(--red);
+            color: var(--red);
             animation: shake 0.4s ease-in-out;
         }
 
@@ -295,16 +341,23 @@
         }
 
         .action-btn {
-            background: var(--green);
-            color: white;
+            background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%);
+            color: #000;
             border: none;
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 50px;
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(47, 82, 51, 0.3);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
         }
 
         .action-btn:active {
@@ -313,54 +366,57 @@
 
         /* Estilos del Resultado */
         .reveal-box {
-            background: var(--green);
-            color: var(--gold);
-            padding: 1.5rem;
-            border-radius: 16px;
-            font-size: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gold-glow);
+            padding: 2rem;
+            border-radius: 20px;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
-            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
-            position: relative;
+            margin-bottom: 2rem;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         .gift-idea-container {
-            background: #f9f9f9;
-            border: 2px dashed var(--red);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 2rem;
+            background: rgba(201, 44, 52, 0.1);
+            border: 1px dashed var(--red);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
         }
 
         .gift-idea-label {
             color: var(--red);
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 0.5rem;
             display: block;
         }
 
         .gift-idea-text {
-            color: #555;
+            color: var(--text-main);
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 300;
+            line-height: 1.4;
         }
 
         .close-btn {
             background: transparent;
-            border: 2px solid #ddd;
-            color: #888;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
             padding: 10px 25px;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            font-size: 0.9rem;
         }
 
         .close-btn:hover {
-            border-color: var(--red);
-            color: var(--red);
+            border-color: var(--text-main);
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         /* Canvas para Confeti */
@@ -375,10 +431,11 @@
         }
 
         footer {
-            margin-top: 2rem;
-            color: rgba(255, 255, 255, 0.7);
+            margin-top: 3rem;
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.8rem;
             z-index: 10;
+            font-weight: 300;
         }
     </style>
 </head>
@@ -400,7 +457,7 @@
     <div class="container">
         <div class="holly-decoration">🎄</div>
         <h1>Viejito Pascuero</h1>
-        <p class="subtitle">¿Quién eres?</p>
+        <p class="subtitle">Selecciona tu nombre para comenzar</p>
 
         <div class="names-grid" id="buttons-container">
             <!-- Los botones se generan con JS -->
@@ -421,8 +478,7 @@
 
             <button class="action-btn" onclick="verifyPin()">Verificar</button>
             <br><br>
-            <button class="close-btn" onclick="closePinModal()"
-                style="font-size: 0.8rem; padding: 5px 15px;">Cancelar</button>
+            <button class="close-btn" onclick="closePinModal()">Cancelar</button>
         </div>
     </div>
 
@@ -614,7 +670,8 @@
 
         function fireConfetti() {
             particles = [];
-            const colors = ['#D42426', '#2F5233', '#F1D570', '#FFFFFF'];
+            // Colores actualizados para el nuevo tema
+            const colors = ['#D4AF37', '#C92C34', '#F2F2F2', '#235D3A'];
 
             for (let i = 0; i < 150; i++) {
                 particles.push({
